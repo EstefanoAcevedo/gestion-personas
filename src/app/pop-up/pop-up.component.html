@@ -1,0 +1,7 @@
+<div class="p-5" [ngClass]="{'bg-success': data.valid, 'bg-danger': !data.valid}">
+    <div class="text-white fs-4" mat-dialog-content>{{data.msg}}</div>
+    <mat-dialog-actions class="row text-center">
+        <button class="btn btn-light" matButton mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>
+</div>
+

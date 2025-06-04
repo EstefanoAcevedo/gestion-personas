@@ -1,0 +1,101 @@
+<main>
+    <div class="container-fluid">
+        <div class="row p-5 text-center text-md-start">
+            <div class="col-12 col-md-8 col-lg-9 col-xxl-10">
+                <h2>Listado de Estudiantes</h2>
+            </div>
+            <div class="col-12 col-md-4 mt-3 mt-md-0 col-lg-3 col-xxl-2">
+                <button class="btn btn-primary p-2" [ngClass]="{'bg-white': btnToggleBgWhite, 'text-primary': btnToggleTextPrimary}"  (mouseenter)="btnToggleBgWhite = !btnToggleBgWhite; btnToggleTextPrimary = !btnToggleTextPrimary" (mouseleave)="btnToggleBgWhite = !btnToggleBgWhite; btnToggleTextPrimary = !btnToggleTextPrimary" (click)="toggleEditar = false; toggleForm = true; formEstudiantes.reset()">Añadir nuevo estudiante</button>
+            </div>
+        </div>
+        <div class="row border" *ngIf="toggleForm">
+            <form [formGroup]="formEstudiantes" class="row g-4 p-5 pt-0">
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="">DNI</label>
+                    <input formControlName="est_dni" class="form-control" type="number" placeholder="Ingrese su número de documento">
+                    <div *ngIf="est_dni.invalid && (est_dni.touched || est_dni.dirty)">
+                        <p *ngIf="est_dni.errors?.['required']" class="text-danger bi bi-exclamation-circle-fill">
+                            DNI requerido.
+                        </p>
+                        <p *ngIf="est_dni.errors?.['max']" class="text-danger bi bi-exclamation-circle-fill">
+                            Ingrese un DNI válido.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="">Nombre y Apellido</label>
+                    <input formControlName="est_nombreApellido" class="form-control" type="text" placeholder="Escriba su nombre y apellido">
+                    <div *ngIf="est_nombreApellido.invalid && (est_nombreApellido.touched || est_nombreApellido.dirty)">
+                        <p *ngIf="est_nombreApellido.errors?.['required']" class="text-danger bi bi-exclamation-circle-fill">
+                            Nombre y Apellido requeridos.
+                        </p>
+                        <p *ngIf="est_nombreApellido.errors?.['pattern']" class="text-danger bi bi-exclamation-circle-fill">
+                            Solo se permiten letras mayúsculas y minúsculas.
+                        </p>
+                        <p *ngIf="est_nombreApellido.errors?.['maxlength']" class="text-danger bi bi-exclamation-circle-fill">
+                            Nombre y apellidos demasiado largos.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="">Email</label>
+                    <input formControlName="est_email" class="form-control" type="email" placeholder="name@example.com">
+                    <div *ngIf="est_email.invalid && (est_email.touched || est_email.dirty)">
+                        <p *ngIf="est_email.errors?.['required']" class="text-danger bi bi-exclamation-circle-fill">
+                            Email requerido.
+                        </p>
+                        <p *ngIf="est_email.errors?.['email']" class="text-danger bi bi-exclamation-circle-fill">
+                            Ingrese un Email válido.
+                        </p>
+                        <p *ngIf="est_email.errors?.['maxlentgh']" class="text-danger bi bi-exclamation-circle-fill">
+                            Email demasiado largo.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="">Fecha de Nacimiento</label>
+                    <input formControlName="est_fechaNacimiento" class="form-control" type="date">
+                    <div *ngIf="est_fechaNacimiento.invalid && (est_fechaNacimiento.touched || est_fechaNacimiento.dirty)">
+                        <p *ngIf="est_fechaNacimiento.errors?.['required']" class="text-danger bi bi-exclamation-circle-fill">
+                            Fecha de nacimiento requerida.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input *ngIf="!toggleEditar" class="btn btn-primary me-1" (click)="guardarEstudiante();" [ngClass]="{'bg-white': btnSaveBgWhite, 'text-primary': btnSaveTextPrimary}" (mouseenter)="btnSaveBgWhite = !btnSaveBgWhite; btnSaveTextPrimary = !btnSaveTextPrimary" (mouseleave)="btnSaveBgWhite = !btnSaveBgWhite; btnSaveTextPrimary = !btnSaveTextPrimary" type="button" value="Guardar">
+                    <input *ngIf="toggleEditar" class="btn btn-primary me-1" (click)="actualizarEstudiante();" [ngClass]="{'bg-white': btnSaveBgWhite, 'text-primary': btnSaveTextPrimary}" (mouseenter)="btnSaveBgWhite = !btnSaveBgWhite; btnSaveTextPrimary = !btnSaveTextPrimary" (mouseleave)="btnSaveBgWhite = !btnSaveBgWhite; btnSaveTextPrimary = !btnSaveTextPrimary" type="button" value="Guardar cambios">
+                    <button class="btn btn-danger" [ngClass]="{'bg-white': btnCancelBgWhite, 'text-danger': btnCancelTextDanger}" (mouseenter)="btnCancelBgWhite = !btnCancelBgWhite; btnCancelTextDanger = !btnCancelTextDanger" (mouseleave)="btnCancelBgWhite = !btnCancelBgWhite; btnCancelTextDanger = !btnCancelTextDanger" (click)="toggleForm = false; btnCancelBgWhite = !btnCancelBgWhite; btnCancelTextDanger = !btnCancelTextDanger">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        <div class="row p-5">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover text-center align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">DNI</th>
+                                <th scope="col">Nombre y Apellido</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Fecha de Nacimiento</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr *ngFor="let estudiante of estudiantes; index as i">
+                                <td>{{estudiante.est_dni}}</td>
+                                <td>{{estudiante.est_nombreApellido}}</td>
+                                <td>{{estudiante.est_email}}</td>
+                                <td>{{estudiante.est_fechaNacimiento}}</td>
+                                <td>
+                                    <button class="m-1 btn btn-warning bi bi-pen-fill" (click)="poblarFormEstudiantes(i); toggleEditar = true; toggleForm = true;">Editar</button>
+                                    <button class="m-1 btn btn-danger bi bi-trash-fill"(click)="eliminarEstudiante(i);" >Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

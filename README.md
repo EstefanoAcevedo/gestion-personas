@@ -1,27 +1,30 @@
 # GestionPersonas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+Este proyecto se utilizó durante el aprendizaje inicial de Angular.
 
-## Development server
+## Ejecutar el proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para lanzar el proyecto, ejecutar el comando "ng s --o", el mismo abrirá una ventana en "http://localhost:4200/" con la aplicación.
+Si no se cuenta con los modulos necesarios, ejecutar "npm install" para instalarlos.
+También es necesario el uso de Angular Material, ejecutar "ng add @angular/material".
 
-## Code scaffolding
+## Dependencias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+El proyecto utiliza las siguientes dependencias:
 
-## Build
+- NgModule: Permite decorar una clase como módulo y demás metadatos.
+- BrowserModule: Incorpora la infraestructura necesaria para las aplicaciones de Angular.
+- ReactiveFormsModule: Incorpora la infraestructura necesaria para utilizar los formularios reactivos.
+- AppRoutingModule: Incorpora la infraestructura necesaria para utilizar el sistema de ruteo de Angular.
+- HttpClientModule: Incorpora las funcionalidades necesarias para realizar peticiones HTTP y manejar las respuestas.
+- MatDialogModule: Incorpora la infraestructura necesaria para abrir ventanas modales en Angular, pertenece a Angular Material.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Componentes
 
-## Running unit tests
+Estos son los componentes del proyecto:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- HeaderComponent: es el encabezado de la aplicación, cuenta con una barra de navegación colapsable.
+- FooterComponent: es el pie de la aplicación, cuenta con datos acerca del creador de la página.
+- PrincipalComponent: es el componente principal, en él se encuentra la tabla que muestra el listado de estudiantes y el formulario para añadir o editar los mismos.
+- AcercaComponent: este componente muestra información adicional ficticia acerca de la página.
+- PopUpComponent: este componente se utiliza como plantilla en las ventanas modales, posee datos configurables para personalizar el mismo.
