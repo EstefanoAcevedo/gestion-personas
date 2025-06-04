@@ -1,6 +1,6 @@
 # GestionPersonas
 
-Este proyecto se utilizó durante el aprendizaje inicial de Angular.
+Este proyecto se utilizó para aprender y dar un primer vistazo al framework Angular.
 
 ## Ejecutar el proyecto
 
