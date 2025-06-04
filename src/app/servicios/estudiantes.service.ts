@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EstudiantesInterface } from './estudiantes.interface';
 
-const apiKey: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3anZlY3JleWxqbmFteGdocWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcyNjM2NDMsImV4cCI6MjA2MjgzOTY0M30.ZVOLvixggzoOwkDJqvdKLK-ctRXVX5uqSDbrdWZU0LI";
-const auth: string = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3anZlY3JleWxqbmFteGdocWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcyNjM2NDMsImV4cCI6MjA2MjgzOTY0M30.ZVOLvixggzoOwkDJqvdKLK-ctRXVX5uqSDbrdWZU0LI";
+const apiKey: string = "";
+const auth: string = "";
 const baseUrl: string = "https://qwjvecreyljnamxghqgu.supabase.co/rest/v1/estudiantes";
 
 const headers = new HttpHeaders({
